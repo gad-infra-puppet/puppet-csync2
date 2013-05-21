@@ -18,7 +18,7 @@ define csync2::key (
     default => "csync2_${title}.key",
   }
 
-  file { "/etc/csync2/${filename}":
+  file { "${csync2::csync2_confdir}/${filename}":
     source  => $source,
     content => $content,
     owner   => 'root',

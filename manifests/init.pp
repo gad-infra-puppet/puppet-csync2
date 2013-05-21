@@ -6,6 +6,7 @@
 #  include csync2
 #
 class csync2 (
+  $csync2_confdir = $csync2::params::csync2_confdir,
   $cfg_source  = undef,
   $cfg_content = undef,
   $key_source  = undef,
@@ -14,7 +15,7 @@ class csync2 (
   # Only used if $xinetd is true
   $port        = '30865',
   $only_from   = '10.0.0.0/8 172.16.0.0/12 192.168.0.0/16'
-) {
+) inherits csync2::params {
 
   package { 'csync2': ensure => installed }
 
