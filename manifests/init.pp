@@ -43,13 +43,12 @@ class csync2 (
 
   # Mandatory xinetd service, optionally managed here
   if $xinetd == true {
-    xinetd::serviceconf { 'csync2':
+    xinetd::service { 'csync2':
       service_type => 'UNLISTED',
       flags        => 'REUSE',
       server       => '/usr/sbin/csync2',
       server_args  => '-i',
       port         => $port,
-      only_from    => $only_from,
       require      => Package['csync2'],
     }
   }
